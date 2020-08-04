@@ -76,6 +76,10 @@ class AppointmentController {
       return res.status(400).json({ error: 'Past date are not permitted' });
     }
 
+    if (provider_id === req.userId) {
+      return res.status(401).json({ error: 'appointments are created only by users' })
+    }
+
     /**
      * Check date availabity
      */
